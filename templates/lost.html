@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            padding: 30px;
+        }
+
+        .form-box {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-box">
+
+        <h1>Report Lost Item</h1>
+
+        <form>
+
+            <label>Item Name</label>
+            <input type="text" placeholder="Example: College ID Card">
+
+            <label>Category</label>
+            <select>
+                <option>Select Category</option>
+                <option>ID Card</option>
+                <option>Mobile</option>
+                <option>Bag</option>
+                <option>Books</option>
+                <option>Other</option>
+            </select>
+
+            <label>Lost Location</label>
+            <input type="text" placeholder="Example: College Library">
+
+            <label>Date</label>
+            <input type="date">
+
+            <label>Description</label>
+            <textarea placeholder="Describe your lost item"></textarea>
+
+            <label>Contact Number</label>
+            <input type="tel" placeholder="Enter your contact number">
+
+            <button type="submit">Submit Lost Item</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
