@@ -3,21 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lost and found campus</title>
+    <title>Lost & Found Campus</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        nav {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            font-size: 24px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 45px;
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        .lost {
+            background: #dc2626;
+            color: white;
+        }
+
+        .found {
+            background: #16a34a;
+            color: white;
+        }
+
+        .features {
+            padding: 50px 8%;
+            text-align: center;
+        }
+
+        .features h2 {
+            color: #1e3a8a;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            width: 250px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e3a8a;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Lost & Found Campus</h1>
-    <p>Find lost items.Report found items.</p>
 
-    <button>Report Item</button>
-    <button>report Found Item</button>
+    <nav>
+        <h2>🎓 Lost & Found Campus</h2>
 
-    <h2>Welcome to Lost & Found Campus</h2>
+        <div>
+            <a href="/">Home</a>
+            <a href="#">Lost Items</a>
+            <a href="#">Found Items</a>
+        </div>
+    </nav>
 
-    <p>
-         this platform helps students and staf report,
-         serach and recover lost items on campus.
-    </p>
-    
+    <section class="hero">
+        <h1>Lost Something?</h1>
+
+        <p>
+            Find your lost items or report something you found on campus.
+        </p>
+
+        <button class="lost">Report Lost Item</button>
+        <button class="found">Report Found Item</button>
+    </section>
+
+    <section class="features">
+        <h2>How It Works</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🔍 Search</h3>
+                <p>Search for lost and found items on campus.</p>
+            </div>
+
+            <div class="card">
+                <h3>📝 Report</h3>
+                <p>Report an item you lost or found.</p>
+            </div>
+
+            <div class="card">
+                <h3>🤝 Recover</h3>
+                <p>Connect with the owner and return the item.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Lost & Found Campus | Mini Project</p>
+    </footer>
+
 </body>
 </html>
