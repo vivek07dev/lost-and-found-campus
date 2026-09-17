@@ -11,5 +11,10 @@ def home():
 def lost():
     return render_template("lost.html")
 
+@app.route("/found")
+def found():
+    return render_template("found.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
