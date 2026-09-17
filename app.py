@@ -1,7 +1,8 @@
 from flask import Flask,render_template
-
+from database import create_database
 
 app = Flask(__name__)
+create_database
 
 @app.route("/")
 def home():
@@ -18,3 +19,5 @@ def found():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+    
