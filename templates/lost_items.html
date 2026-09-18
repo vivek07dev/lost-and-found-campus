@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Items</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 30px;
+        }
+
+        .item {
+            max-width: 600px;
+            margin: 15px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .item h2 {
+            color: #dc2626;
+        }
+
+        .item p {
+            margin: 8px 0;
+        }
+
+        .back {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            text-align: center;
+            padding: 12px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lost Items</h1>
+
+    {% if items %}
+
+        {% for item in items %}
+
+        <div class="item">
+            <h2>{{ item[1] }}</h2>
+
+            <p><strong>Category:</strong> {{ item[2] }}</p>
+            <p><strong>Location:</strong> {{ item[3] }}</p>
+            <p><strong>Date:</strong> {{ item[4] }}</p>
+            <p><strong>Description:</strong> {{ item[5] }}</p>
+            <p><strong>Contact:</strong> {{ item[6] }}</p>
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="item">
+            <h2>No Lost Items</h2>
+            <p>Currently no lost items have been reported.</p>
+        </div>
+
+    {% endif %}
+
+    <a href="/" class="back">Back to Home</a>
+
+</body>
+</html>
