@@ -65,13 +65,13 @@
 
         <h1>Report Found Item</h1>
 
-        <form>
+        <form action="/submit-found" method="POST">
 
             <label>Item Name</label>
-            <input type="text" placeholder="Example: College ID Card">
+            <input type="text" name="item_name" placeholder="Example: College ID Card">
 
             <label>Category</label>
-            <select>
+            <select name="category">
                 <option>Select Category</option>
                 <option>ID Card</option>
                 <option>Mobile</option>
@@ -81,16 +81,16 @@
             </select>
 
             <label>Found Location</label>
-            <input type="text" placeholder="Example: College Library">
+            <input type="text" name="location" placeholder="Example: College Library">
 
             <label>Date</label>
-            <input type="date">
+            <input type="date" name="date">
 
             <label>Description</label>
-            <textarea placeholder="Describe the item you found"></textarea>
+            <textarea name="description" placeholder="Describe the item you found"></textarea>
 
             <label>Contact Number</label>
-            <input type="tel" placeholder="Enter your contact number">
+            <input type="tel" name="contact" placeholder="Enter your contact number">
 
             <button type="submit">Submit Found Item</button>
 

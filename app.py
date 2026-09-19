@@ -61,6 +61,37 @@ def lost_items():
 
     return render_template("lost_items.html", items=items)
 
+@app.route("/submit-found", methods=["POST"])
+def submit_found():
+    item_name = request.form["item_name"]
+    category = request.form["category"]
+    location = request.form["location"]
+    date = request.form["date"]
+    description = request.form["description"]
+    contact = request.form["contact"]
+
+    conn = sqlite3.connect("lost_found.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO items
+        (item_name, category, location, date, description, contact, item_type)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    """, (
+        item_name,
+        category,
+        location,
+        date,
+        description,
+        contact,
+        "Found"
+    ))
+
+    conn.commit()
+    conn.close()
+
+    return "Found Item Successfully Submitted!"
+
 
 @app.route("/found")
 def found():
