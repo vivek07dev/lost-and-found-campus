@@ -97,6 +97,18 @@ def submit_found():
 def found():
     return render_template("found.html")
 
+@app.route("/found-items")
+def found_items():
+    conn = sqlite3.connect("lost_found.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM items WHERE item_type = 'Found'")
+    items = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("found_items.html", items=items)
+
 
 if __name__ == "_main_":
-    app.run(debug=True)
+    app.run(debug=True) 
