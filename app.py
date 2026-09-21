@@ -18,8 +18,14 @@ def lost():
     return render_template("lost.html")
 
 
+@app.route("/found")
+def found():
+    return render_template("found.html")
+
+
 @app.route("/submit-lost", methods=["POST"])
 def submit_lost():
+
     item_name = request.form["item_name"]
     category = request.form["category"]
     location = request.form["location"]
@@ -49,20 +55,10 @@ def submit_lost():
 
     return "Lost Item Successfully Submitted!"
 
-@app.route("/lost-items")
-def lost_items():
-    conn = sqlite3.connect("lost_found.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM items WHERE item_type = 'Lost'")
-    items = cursor.fetchall()
-
-    conn.close()
-
-    return render_template("lost_items.html", items=items)
 
 @app.route("/submit-found", methods=["POST"])
 def submit_found():
+
     item_name = request.form["item_name"]
     category = request.form["category"]
     location = request.form["location"]
@@ -93,12 +89,23 @@ def submit_found():
     return "Found Item Successfully Submitted!"
 
 
-@app.route("/found")
-def found():
-    return render_template("found.html")
+@app.route("/lost-items")
+def lost_items():
+
+    conn = sqlite3.connect("lost_found.db")
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM items WHERE item_type = 'Lost'")
+    items = cursor.fetchall()
+
+    conn.close()
+
+    return render_template("lost_items.html", items=items)
+
 
 @app.route("/found-items")
 def found_items():
+
     conn = sqlite3.connect("lost_found.db")
     cursor = conn.cursor()
 
@@ -110,5 +117,6 @@ def found_items():
     return render_template("found_items.html", items=items)
 
 
-if __name__ == "_main_":
-    app.run(debug=True) 
+if __name__== "_main_":
+    app.run(debug=True)
+    
