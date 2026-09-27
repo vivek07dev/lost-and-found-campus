@@ -112,6 +112,34 @@
             <button class="view">View Found Items</button>
         </a>
 
+        <div style="margin-top: 40px;">
+
+            <h2>Search Items</h2>
+
+           <form action="/search" method="GET">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search lost or found item..."
+        style="padding: 12px; width: 300px; border: 1px solid #ccc; border-radius: 6px;"
+        required
+    >
+
+    <button type="submit" class="view">Search</button>
+
+</form>
+
+            <a href="/lost">
+                <button class="lost">Report Lost Item</button>
+            </a>
+
+            <a href="/found">
+                <button class="found">Report Found Item</button>
+            </a>
+
+        </div>
+
     </div>
 
 </body>

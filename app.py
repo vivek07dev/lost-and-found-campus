@@ -128,6 +128,31 @@ def delete_item(item_id):
 
     return "Item Deleted Successfully!"
 
+@app.route("/search")
+def search():
+    query = request.args.get("q", "")
+
+    conn = sqlite3.connect("lost_found.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT * FROM items
+        WHERE item_name LIKE ?
+        OR category LIKE ?
+        OR location LIKE ?
+    """, (
+        "%" + query + "%",
+        "%" + query + "%",
+        "%" + query + "%"
+    ))
+
+    items = cursor.fetchall()
+    conn.close()
+
+    return render_template("search.html", items=items, query=query)
+
+
+
 
 if __name__ == "_main_":
     app.run(debug=True)

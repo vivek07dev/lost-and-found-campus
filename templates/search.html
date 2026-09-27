@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Found Items</title>
+    <title>Search Items</title>
 
     <style>
         body {
@@ -15,8 +14,27 @@
 
         h1 {
             text-align: center;
-            color: #16a34a;
-            margin-bottom: 30px;
+            color: #1e3a8a;
+        }
+
+        .search-box {
+            text-align: center;
+            margin: 30px;
+        }
+
+        input {
+            padding: 12px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
         }
 
         .item {
@@ -25,58 +43,46 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .item h2 {
-            color: #16a34a;
-        }
-
-        .item p {
-            margin: 8px 0;
+            color: #1e3a8a;
         }
 
         .back {
             display: block;
-            width: 200px;
-            margin: 30px auto;
             text-align: center;
-            padding: 12px;
-            background: #1e3a8a;
-            color: white;
-            text-decoration: none;
-            border-radius: 7px;
+            margin: 30px;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Found Items</h1>
+    <h1>Search Items</h1>
+
+    <div class="search-box">
+        <form action="/search" method="GET">
+            <input type="text" name="q"
+                   placeholder="Search item..."
+                   value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
     {% if items %}
 
         {% for item in items %}
 
         <div class="item">
-
             <h2>{{ item[1] }}</h2>
 
+            <p><strong>Type:</strong> {{ item[7] }}</p>
             <p><strong>Category:</strong> {{ item[2] }}</p>
-
             <p><strong>Location:</strong> {{ item[3] }}</p>
-
             <p><strong>Date:</strong> {{ item[4] }}</p>
-
             <p><strong>Description:</strong> {{ item[5] }}</p>
-
             <p><strong>Contact:</strong> {{ item[6] }}</p>
-
-            <a href="/delete-item/{{ item[0] }}"
-   onclick="return confirm('Are you sure you want to delete this item?');">
-    🗑️ Delete Item
-</a>
-
         </div>
 
         {% endfor %}
@@ -84,16 +90,13 @@
     {% else %}
 
         <div class="item">
-
-            <h2>No Found Items</h2>
-
-            <p>Currently no found items have been reported.</p>
-
+            <h2>No Items Found</h2>
+            <p>No matching lost or found item.</p>
         </div>
 
     {% endif %}
 
-    <a href="/" class="back">Back to Home</a>
+    <a href="/">Back to Home</a>
 
 </body>
 </html>

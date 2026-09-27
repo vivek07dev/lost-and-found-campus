@@ -65,6 +65,12 @@
             <p><strong>Date:</strong> {{ item[4] }}</p>
             <p><strong>Description:</strong> {{ item[5] }}</p>
             <p><strong>Contact:</strong> {{ item[6] }}</p>
+            <a href="/delete-item/{{ item[0] }}"
+               onclick="return confirm('Are you sure you want to delete this item?');">
+                🗑️ Delete Item
+           </a>
+
+           
         </div>
 
         {% endfor %}
