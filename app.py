@@ -114,9 +114,21 @@ def found_items():
 
     conn.close()
 
-    return render_template("found_items.html", items=items)
+    return render_template("found-items.html", items=items)
+
+@app.route("/delete-item/<int:item_id>")
+def delete_item(item_id):
+    conn = sqlite3.connect("lost_found.db")
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM items WHERE id = ?", (item_id,))
+
+    conn.commit()
+    conn.close()
+
+    return "Item Deleted Successfully!"
 
 
-if __name__== "_main_":
+if __name__ == "_main_":
     app.run(debug=True)
-    
+

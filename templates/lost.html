@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,6 +39,7 @@
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
+            box-sizing: border-box;
         }
 
         textarea {
@@ -61,44 +62,46 @@
 
 <body>
 
-    <div class="form-box">
+<div class="form-box">
 
-        <h1>Report Lost Item</h1>
+    <h1>Report Lost Item</h1>
 
-        <form action="/submit-lost" method="'POST">
+    <form action="/submit-lost" method="POST">
 
-            <label>Item Name</label>
-            <input type="text" name="item_name"
-             placeholder="Example: College ID Card">
+        <label>Item Name</label>
+        <input type="text" name="item_name"
+               placeholder="Example: College ID Card" required>
 
-            <label>Category</label>
-            <select name="category">
-                <option>Select Category</option>
-                <option>ID Card</option>
-                <option>Mobile</option>
-                <option>Bag</option>
-                <option>Books</option>
-                <option>Other</option>
-            </select>
+        <label>Category</label>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option>ID Card</option>
+            <option>Mobile</option>
+            <option>Bag</option>
+            <option>Books</option>
+            <option>Other</option>
+        </select>
 
-            <label>Lost Location</label>
-            <input type="text" name="locatoin" placeholder="Example: College Library">
+        <label>Lost Location</label>
+        <input type="text" name="location"
+               placeholder="Example: College Library" required>
 
-            <label>Date</label>
-            <input type="date" name="date">
+        <label>Date</label>
+        <input type="date" name="date" required>
 
-            <label>Description</label>
-            <textarea name="description"
-            placeholder="Describe your lost item"></textarea>
+        <label>Description</label>
+        <textarea name="description"
+                  placeholder="Describe your lost item"></textarea>
 
-            <label>Contact Number</label>
-            <input type="tel" name="contect" placeholder="Enter your contact number">
+        <label>Contact Number</label>
+        <input type="tel" name="contact"
+               placeholder="Enter your contact number" required>
 
-            <button type="submit">Submit Lost Item</button>
+        <button type="submit">Submit Lost Item</button>
 
-        </form>
+    </form>
 
-    </div>
+</div>
 
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Found Items</title>
 
     <style>
@@ -58,13 +59,19 @@
         {% for item in items %}
 
         <div class="item">
+
             <h2>{{ item[1] }}</h2>
 
             <p><strong>Category:</strong> {{ item[2] }}</p>
+
             <p><strong>Location:</strong> {{ item[3] }}</p>
+
             <p><strong>Date:</strong> {{ item[4] }}</p>
+
             <p><strong>Description:</strong> {{ item[5] }}</p>
+
             <p><strong>Contact:</strong> {{ item[6] }}</p>
+
         </div>
 
         {% endfor %}
@@ -72,8 +79,11 @@
     {% else %}
 
         <div class="item">
+
             <h2>No Found Items</h2>
+
             <p>Currently no found items have been reported.</p>
+
         </div>
 
     {% endif %}
