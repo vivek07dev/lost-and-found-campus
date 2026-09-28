@@ -6,144 +6,383 @@
 
     <title>Lost & Found Campus</title>
 
-    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f7faff;
+            color: #17365d;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #12345b;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #2583e8;
+        }
+
+        nav {
+            display: flex;
+            gap: 12px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background: #2583e8;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 50px 20px 35px;
+            background: linear-gradient(135deg, #eaf4ff, #ffffff);
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            color: #17365d;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #1877e8;
+        }
+
+        .hero p {
+            font-size: 19px;
+            color: #64748b;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            text-decoration: none;
+            color: white;
+            padding: 28px;
+            border-radius: 15px;
+            min-height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-content h2 {
+            margin-bottom: 10px;
+            font-size: 23px;
+        }
+
+        .card-content p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .icon {
+            font-size: 42px;
+            background: rgba(255,255,255,0.22);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lost {
+            background: linear-gradient(135deg, #1976e8, #3188ed);
+        }
+
+        .found {
+            background: linear-gradient(135deg, #16ad7d, #28c997);
+        }
+
+        .view-lost {
+            background: linear-gradient(135deg, #5d48d9, #765de8);
+        }
+
+        .view-found {
+            background: linear-gradient(135deg, #f39a00, #ffb52d);
+        }
+
+        /* SEARCH */
+        .search-box {
+            margin-top: 45px;
+            padding: 30px;
+            background: #f1f7ff;
+            border: 1px solid #dbe8f8;
+            border-radius: 15px;
+        }
+
+        .search-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-form input {
+            flex: 1;
+            padding: 16px;
+            border: 1px solid #d4deeb;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .search-form button {
+            background: #1877e8;
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-form button:hover {
+            background: #125fc0;
+        }
+
+        .report-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .report-buttons a {
+            text-decoration: none;
+            text-align: center;
+            padding: 16px;
+            border-radius: 8px;
+            background: #e4effd;
+            color: #1769c2;
+            font-weight: bold;
+        }
+
+        .report-buttons a:hover {
+            background: #d4e6fb;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 45px;
+            background: #12345b;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form button {
+                padding: 14px;
+            }
+
+            .report-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
-       <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f6f8;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
-
-    h1 {
-        background: #1e3a8a;
-        color: white;
-        padding: 25px;
-        margin: 0;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-    }
-
-    .card {
-        background: white;
-        padding: 25px;
-        margin: 20px 0;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    a {
-        display: inline-block;
-        margin: 8px;
-        padding: 12px 20px;
-        background: #1e3a8a;
-        color: white;
-        text-decoration: none;
-        border-radius: 7px;
-    }
-
-    a:hover {
-        opacity: 0.85;
-    }
-
-    input {
-        padding: 12px;
-        width: 60%;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-    }
-
-    button {
-        padding: 12px 20px;
-        background: #1e3a8a;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        opacity: 0.85;
-    }
-</style>
 
 <body>
 
-    <nav>
-        <h2>Lost & Found Campus</h2>
+<header>
 
-        <div>
-            <a href="/">Home</a>
-            <a href="/lost-items">Lost Items</a>
-            <a href="/found-items">Found Items</a>
-        </div>
+    <div class="logo">
+        🎓 Lost & Found <span>Campus</span>
+    </div>
+
+    <nav>
+        <a href="/">🏠 Home</a>
+        <a href="/lost-items">🔍 Lost Items</a>
+        <a href="/found-items">📦 Found Items</a>
     </nav>
 
-    <div class="hero">
+</header>
 
-        <h1>Lost Something?</h1>
 
-        <p>
-            Find your lost items or report something you found on campus.
-        </p>
+<section class="hero">
 
-        <!-- Report Lost -->
-        <a href="/lost">
-            <button class="lost">Report Lost Item</button>
+    <h1>Lost <span>Something?</span></h1>
+
+    <p>
+        Find your lost items or report something you found on campus.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+    <div class="cards">
+
+        <a href="/lost" class="card lost">
+
+            <div class="card-content">
+                <h2>Report Lost Item</h2>
+                <p>Tell us about the item you lost</p>
+            </div>
+
+            <div class="icon">👜</div>
+
         </a>
 
-        <!-- Report Found -->
-        <a href="/found">
-            <button class="found">Report Found Item</button>
+
+        <a href="/found" class="card found">
+
+            <div class="card-content">
+                <h2>Report Found Item</h2>
+                <p>Help someone get their item back</p>
+            </div>
+
+            <div class="icon">📦</div>
+
         </a>
 
-        <br>
 
-        <!-- View Lost -->
-        <a href="/lost-items">
-            <button class="view">View Lost Items</button>
+        <a href="/lost-items" class="card view-lost">
+
+            <div class="card-content">
+                <h2>View Lost Items</h2>
+                <p>Browse all reported lost items</p>
+            </div>
+
+            <div class="icon">👁️</div>
+
         </a>
 
-        <!-- View Found -->
-        <a href="/found-items">
-            <button class="view">View Found Items</button>
+
+        <a href="/found-items" class="card view-found">
+
+            <div class="card-content">
+                <h2>View Found Items</h2>
+                <p>Browse all reported found items</p>
+            </div>
+
+            <div class="icon">📦</div>
+
         </a>
 
-        <div style="margin-top: 40px;">
+    </div>
 
-            <h2>Search Items</h2>
 
-           <form action="/search" method="GET">
+    <div class="search-box">
 
-    <input
-        type="text"
-        name="q"
-        placeholder="Search lost or found item..."
-        style="padding: 12px; width: 300px; border: 1px solid #ccc; border-radius: 6px;"
-        required
-    >
+        <div class="search-title">
+            🔍 Search Items
+        </div>
 
-    <button type="submit" class="view">Search</button>
+        <form action="/search" method="GET" class="search-form">
 
-</form>
+            <input
+                type="text"
+                name="q"
+                placeholder="Search lost or found item..."
+                required
+            >
+
+            <button type="submit">
+                🔍 Search
+            </button>
+
+        </form>
+
+
+        <div class="report-buttons">
 
             <a href="/lost">
-                <button class="lost">Report Lost Item</button>
+                👜 &nbsp; Report Lost Item
             </a>
 
             <a href="/found">
-                <button class="found">Report Found Item</button>
+                📦 &nbsp; Report Found Item
             </a>
 
         </div>
 
     </div>
 
+</div>
+
+
+<footer>
+
+    <p>
+        🎓 &nbsp; Lost & Found Campus
+        &nbsp;&nbsp; | &nbsp;&nbsp;
+        Together we keep our campus safer
+    </p>
+
+</footer>
+
 </body>
-</html
+</html>

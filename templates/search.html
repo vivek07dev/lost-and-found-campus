@@ -3,100 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Items</title>
+
+    <title>Search Items - Lost & Found Campus</title>
 
     <style>
-        body {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            padding: 30px;
+        }
+
+        body {
+            background: #f5f9ff;
+            color: #183153;
+        }
+
+        header {
+            background: #102a43;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #2196f3;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #42a5f5;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 45px auto;
         }
 
         h1 {
             text-align: center;
-            color: #1e3a8a;
+            font-size: 38px;
+            color: #102a43;
+            margin-bottom: 30px;
         }
 
         .search-box {
-            text-align: center;
-            margin: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 12px;
+            margin-bottom: 35px;
         }
 
-        input {
-            padding: 12px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
+        .search-box input {
+            flex: 1;
+            padding: 14px;
+            border: 1px solid #d9e2ec;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
         }
 
-        button {
-            padding: 12px 20px;
-            background: #2563eb;
+        .search-box input:focus {
+            border-color: #1976d2;
+        }
+
+        .search-box button {
+            padding: 14px 25px;
+            background: #1976d2;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .item {
-            max-width: 600px;
-            margin: 15px auto;
+        .search-box button:hover {
+            background: #125ca1;
+        }
+
+        .items-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .item-card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-left: 5px solid #1976d2;
         }
 
-        .item h2 {
-            color: #1e3a8a;
+        .item-name {
+            color: #1976d2;
+            font-size: 24px;
+            margin-bottom: 15px;
         }
 
-        .back {
-            display: block;
+        .item-card p {
+            margin: 9px 0;
+            color: #486581;
+        }
+
+        .item-card strong {
+            color: #243b53;
+        }
+
+        .type {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #e3f2fd;
+            color: #1976d2;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .no-result {
+            background: white;
             text-align: center;
-            margin: 30px;
+            padding: 45px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .no-result h2 {
+            color: #102a43;
+            margin-bottom: 10px;
+        }
+
+        .no-result p {
+            color: #627d98;
+        }
+
+        .back-btn {
+            display: block;
+            width: 180px;
+            margin: 40px auto;
+            padding: 13px;
+            text-align: center;
+            background: #1976d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 60px;
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .search-box button {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Search Items</h1>
-
-    <div class="search-box">
-        <form action="/search" method="GET">
-            <input type="text" name="q"
-                   placeholder="Search item..."
-                   value="{{ query }}">
-            <button type="submit">Search</button>
-        </form>
+<header>
+    <div class="logo">
+        Lost & Found <span>Campus</span>
     </div>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>🔍 Search Items</h1>
+
+    <form class="search-box" action="/search" method="GET">
+
+        <input
+            type="text"
+            name="q"
+            value="{{ query }}"
+            placeholder="Search item name, category or location..."
+            required
+        >
+
+        <button type="submit">
+            🔍 Search
+        </button>
+
+    </form>
 
     {% if items %}
 
+    <div class="items-container">
+
         {% for item in items %}
 
-        <div class="item">
-            <h2>{{ item[1] }}</h2>
+        <div class="item-card">
 
-            <p><strong>Type:</strong> {{ item[7] }}</p>
-            <p><strong>Category:</strong> {{ item[2] }}</p>
-            <p><strong>Location:</strong> {{ item[3] }}</p>
-            <p><strong>Date:</strong> {{ item[4] }}</p>
-            <p><strong>Description:</strong> {{ item[5] }}</p>
-            <p><strong>Contact:</strong> {{ item[6] }}</p>
+            <span class="type">
+                {{ item[7] }}
+            </span>
+
+            <h2 class="item-name">
+                {{ item[1] }}
+            </h2>
+
+            <p>
+                <strong>Category:</strong>
+                {{ item[2] }}
+            </p>
+
+            <p>
+                <strong>Location:</strong>
+                {{ item[3] }}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                {{ item[4] }}
+            </p>
+
+            <p>
+                <strong>Description:</strong>
+                {{ item[5] }}
+            </p>
+
+            <p>
+                <strong>Contact:</strong>
+                {{ item[6] }}
+            </p>
+
         </div>
 
         {% endfor %}
 
+    </div>
+
     {% else %}
 
-        <div class="item">
-            <h2>No Items Found</h2>
-            <p>No matching lost or found item.</p>
-        </div>
+    <div class="no-result">
+
+        <h2>No Items Found</h2>
+
+        <p>
+            No matching lost or found item was found.
+        </p>
+
+    </div>
 
     {% endif %}
 
-    <a href="/">Back to Home</a>
+    <a class="back-btn" href="/">
+        ← Back to Home
+    </a>
+
+</div>
+
+<footer>
+    Lost & Found Campus
+    <br>
+    Together we keep our campus safer
+</footer>
 
 </body>
 </html>

@@ -3,135 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Report Lost Item</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f9ff;
+            color: #183153;
+        }
+
+        header {
+            background: #102a43;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #2196f3;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            margin: 45px auto;
         }
 
         h1 {
             text-align: center;
-            background: #1e3a8a;
-            color: white;
-            padding: 20px;
-            margin: 0;
+            color: #102a43;
+            margin-bottom: 10px;
         }
 
-        .container {
-            width: 500px;
-            max-width: 90%;
-            margin: 40px auto;
+        .subtitle {
+            text-align: center;
+            color: #627d98;
+            margin-bottom: 30px;
+        }
+
+        .form-card {
             background: white;
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid #1976d2;
         }
 
         label {
             display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
+            margin-top: 18px;
+            margin-bottom: 7px;
             font-weight: bold;
+            color: #243b53;
         }
 
         input,
-        select,
-        textarea {
+        textarea,
+        select {
             width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 13px;
+            border: 1px solid #d9e2ec;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #1976d2;
         }
 
         textarea {
-            height: 100px;
+            min-height: 110px;
             resize: vertical;
         }
 
         button {
             width: 100%;
-            margin-top: 20px;
-            padding: 12px;
-            background: #1e3a8a;
+            margin-top: 25px;
+            padding: 14px;
+            background: #1976d2;
             color: white;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
         }
 
         button:hover {
-            opacity: 0.9;
+            background: #125ca1;
         }
 
         .back {
             display: block;
-            width: fit-content;
-            margin: 20px auto 0;
-            padding: 10px 18px;
-            background: #1e3a8a;
-            color: white;
+            text-align: center;
+            margin-top: 20px;
+            color: #1976d2;
             text-decoration: none;
-            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        footer {
+            margin-top: 60px;
+            background: #102a43;
+            color: white;
+            text-align: center;
+            padding: 25px;
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Report Lost Item</h1>
+<header>
+    <div class="logo">
+        Lost & Found <span>Campus</span>
+    </div>
 
-    <div class="container">
+    <nav>
+        <a href="/">Home</a>
+        <a href="/lost-items">Lost Items</a>
+        <a href="/found-items">Found Items</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>📋 Report Lost Item</h1>
+
+    <p class="subtitle">
+        Enter the details of the item you lost
+    </p>
+
+    <div class="form-card">
 
         <form action="/submit-lost" method="POST">
 
             <label>Item Name</label>
-            <input type="text"
-                   name="item_name"
-                   placeholder="Enter item name"
-                   required>
+            <input type="text" name="item_name" required>
 
             <label>Category</label>
-            <select name="category" required>
-                <option value="">Select Category</option>
-                <option>Mobile</option>
-                <option>Laptop</option>
-                <option>Bag</option>
-                <option>Wallet</option>
-                <option>Keys</option>
-                <option>ID Card</option>
-                <option>Books</option>
-                <option>Other</option>
-            </select>
+            <input type="text" name="category" required>
 
             <label>Lost Location</label>
-            <input type="text"
-                   name="location"
-                   placeholder="Example: College Library"
-                   required>
+            <input type="text" name="location" required>
 
             <label>Date</label>
-            <input type="date"
-                   name="date"
-                   required>
+            <input type="date" name="date" required>
 
             <label>Description</label>
-            <textarea name="description"
-                      placeholder="Describe your lost item"
-                      required></textarea>
+            <textarea name="description" required></textarea>
 
             <label>Contact Number</label>
-            <input type="tel"
-                   name="contact"
-                   placeholder="Enter your contact number"
-                   required>
+            <input type="tel" name="contact" required>
 
             <button type="submit">
                 Submit Lost Item
@@ -139,159 +185,19 @@
 
         </form>
 
-        <a href="/" class="back">
-            Back to Home
+        <a class="back" href="/">
+            ← Back to Home
         </a>
 
     </div>
 
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</div>
 
-    <title>Report Lost Item</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            background: #1e3a8a;
-            color: white;
-            padding: 20px;
-            margin: 0;
-        }
-
-        .container {
-            width: 500px;
-            max-width: 90%;
-            margin: 40px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 20px;
-            padding: 12px;
-            background: #1e3a8a;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        button:hover {
-            opacity: 0.9;
-        }
-
-        .back {
-            display: block;
-            width: fit-content;
-            margin: 20px auto 0;
-            padding: 10px 18px;
-            background: #1e3a8a;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Report Lost Item</h1>
-
-    <div class="container">
-
-        <form action="/submit-lost" method="POST">
-
-            <label>Item Name</label>
-            <input type="text"
-                   name="item_name"
-                   placeholder="Enter item name"
-                   required>
-
-            <label>Category</label>
-            <select name="category" required>
-                <option value="">Select Category</option>
-                <option>Mobile</option>
-                <option>Laptop</option>
-                <option>Bag</option>
-                <option>Wallet</option>
-                <option>Keys</option>
-                <option>ID Card</option>
-                <option>Books</option>
-                <option>Other</option>
-            </select>
-
-            <label>Lost Location</label>
-            <input type="text"
-                   name="location"
-                   placeholder="Example: College Library"
-                   required>
-
-            <label>Date</label>
-            <input type="date"
-                   name="date"
-                   required>
-
-            <label>Description</label>
-            <textarea name="description"
-                      placeholder="Describe your lost item"
-                      required></textarea>
-
-            <label>Contact Number</label>
-            <input type="tel"
-                   name="contact"
-                   placeholder="Enter your contact number"
-                   required>
-
-            <button type="submit">
-                Submit Lost Item
-            </button>
-
-        </form>
-
-        <a href="/" class="back">
-            Back to Home
-        </a>
-
-    </div>
+<footer>
+    Lost & Found Campus
+    <br>
+    Together we keep our campus safer
+</footer>
 
 </body>
 </html>
