@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Report Found Item</title>
 
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            padding: 30px;
-        }
-
-        .form-box {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #f4f6f8;
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
             text-align: center;
-            color: #16a34a;
-            margin-bottom: 25px;
+            background: #1e3a8a;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 90%;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         label {
@@ -34,67 +39,109 @@
             font-weight: bold;
         }
 
-        input, textarea, select {
+        input,
+        select,
+        textarea {
             width: 100%;
-            padding: 12px;
+            padding: 10px;
+            box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 6px;
+            font-size: 14px;
         }
 
         textarea {
             height: 100px;
+            resize: vertical;
         }
 
         button {
             width: 100%;
-            padding: 14px;
             margin-top: 20px;
-            background: #16a34a;
+            padding: 12px;
+            background: #1e3a8a;
             color: white;
             border: none;
-            border-radius: 7px;
-            font-size: 16px;
+            border-radius: 6px;
             cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .back {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            padding: 10px 18px;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="form-box">
+    <h1>Report Found Item</h1>
 
-        <h1>Report Found Item</h1>
+    <div class="container">
 
         <form action="/submit-found" method="POST">
 
             <label>Item Name</label>
-            <input type="text" name="item_name" placeholder="Example: College ID Card">
+            <input type="text"
+                   name="item_name"
+                   placeholder="Enter item name"
+                   required>
 
             <label>Category</label>
-            <select name="category">
-                <option>Select Category</option>
-                <option>ID Card</option>
+            <select name="category" required>
+                <option value="">Select Category</option>
                 <option>Mobile</option>
+                <option>Laptop</option>
                 <option>Bag</option>
+                <option>Wallet</option>
+                <option>Keys</option>
+                <option>ID Card</option>
                 <option>Books</option>
                 <option>Other</option>
             </select>
 
             <label>Found Location</label>
-            <input type="text" name="location" placeholder="Example: College Library">
+            <input type="text"
+                   name="location"
+                   placeholder="Example: College Library"
+                   required>
 
             <label>Date</label>
-            <input type="date" name="date">
+            <input type="date"
+                   name="date"
+                   required>
 
             <label>Description</label>
-            <textarea name="description" placeholder="Describe the item you found"></textarea>
+            <textarea name="description"
+                      placeholder="Describe the found item"
+                      required></textarea>
 
             <label>Contact Number</label>
-            <input type="tel" name="contact" placeholder="Enter your contact number">
+            <input type="tel"
+                   name="contact"
+                   placeholder="Enter your contact number"
+                   required>
 
-            <button type="submit">Submit Found Item</button>
+            <button type="submit">
+                Submit Found Item
+            </button>
 
         </form>
+
+        <a href="/" class="back">
+            Back to Home
+        </a>
 
     </div>
 
